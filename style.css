@@ -1,0 +1,113 @@
+html {
+    height: 100%;
+}
+body {
+    position: relative;
+    background-color: gray;
+    height: 100%;
+}
+.cards {
+    position: absolute;
+    left: 20%;
+    bottom: 20%;
+    padding: 0;
+    display: flex;
+    width: fit-content;
+    gap: 20px;
+    list-style: none;
+    perspective: 160px;
+}
+
+.card {
+    position: relative;
+    width: 226px;
+    height: 314px;
+    perspective: 1000px;
+    transform: rotateX(10deg);
+    transition: 2s;
+}
+
+
+.card__front,
+.card__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: 2s;
+    border-radius: 5%;
+    backface-visibility: hidden;
+}
+
+
+.card__front {
+    transform: rotateY(180deg);
+    background-color: aqua;
+}
+
+
+@keyframes pickUp {
+    0% {
+        transform: rotateX(10deg) translateY(0);
+    }
+    100% {
+        transform:rotateX(0deg) translateY(-350px);
+    }
+}
+
+@keyframes pickDown {
+    0% {
+        transform: rotateX(0deg) translateY(-350px);
+    }
+    100% {
+        transform:rotateX(10deg) translateY(0);
+    }
+}
+
+.card--pickUp {
+    animation: pickUp 2s ease;
+    animation-fill-mode: forwards;
+}
+
+.card--pickUp .card__front {
+    transition-delay: 2s;
+    transform: rotateY(360deg);
+}
+
+.card--pickUp .card__back {
+    transition-delay: 2s;
+    transform: rotateY(180deg);
+}
+
+.card--pickDown {
+    transform: rotateX(0deg) translateY(-350px);
+    animation:  pickDown 2s ease 2s;
+    animation-fill-mode: forwards;
+}
+
+.card--pickDown .card__front {
+    transition-delay: 0s;
+    transform: rotateY(180deg);
+}
+
+.card--pickDown .card__back {
+    transition-delay: 0s;
+    transform: rotateY(0deg);
+}
+
+
+.button-reset {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5%;
+    padding: 10px 20px;
+    min-width: 100px;
+    background-color: black;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}

@@ -5,6 +5,7 @@ body {
     position: relative;
     background-color: gray;
     height: 100%;
+    margin: 0;
 }
 .cards {
     position: absolute;
